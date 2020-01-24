@@ -21,7 +21,7 @@ function setup() {
 
 /* Main */
 function main() {
-  document.getElementById("status").innerHTML = "Valid";
+  document.getElementById("status").innerHTML = "...";
 
   if(winner==false && fullBoard()==false){
     while (rows.hasChildNodes()) {
@@ -48,8 +48,6 @@ function main() {
 }
 
 function newBoard() {
-  document.getElementById("status").innerHTML = "New";
-  
   turns=[];
   // 1-d array, so []
   for (let row=0;row<3;row++){
@@ -204,14 +202,14 @@ function didIWin(array){
 	var proxyWinner = false;
   for (let row=0;row<3;row++){
     for (let col=0;col<3;col++){
-      if (array[row][0]==array[row][1]&&array[row][1]==array[row][2]&&array[row][col]!="e"){
+      if (array[row][0]==array[row][1]&&array[row][1]==array[row][2]&&array[row][col]!="e"||array[0][0]==array[1][1]&&array[1][1]==array[2][2]&&array[1][1]!="e"){
         if (array[row][col]=="b") console.log("Black won!");
         else console.log("White won!");
         console.log(row + "row wins!" + array);
         proxyWinner=true;
         break;
       }
-      if (array[0][col]==array[1][col]&&array[1][col]==array[2][col]&&array[row][col]!="e"){
+      if (array[0][col]==array[1][col]&&array[1][col]==array[2][col]&&array[row][col]!="e"||array[0][2]==array[1][1]&&array[1][1]==array[2][0]&&array[1][1]!="e"){
         if (array[row][col]=="b") console.log("Black won!");
         else console.log("White won!");
         console.log(col + "column wins!" + array);
